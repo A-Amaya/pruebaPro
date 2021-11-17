@@ -1,0 +1,63 @@
+div{
+  margin-right: 10% !important;
+  margin-left: 10% !important;
+  margin-bottom: 2%;
+  max-height: 700px;
+}
+
+  button{
+    background: #b50811 !important;
+  }
+  .header1{
+    font-size: 10px !important;
+    margin-bottom: 10px;
+  }
+  .iconfoto {
+    max-width: 400px;
+  }
+
+  .iconfoto{
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+.izquierdo{
+  max-width: 55%;
+  width: 40%;
+  float: left;
+}
+
+@media (max-width: 1000px){
+  div{
+    margin-right: 10% !important;
+    margin-left: 10% !important;
+    margin-bottom: 2%;
+    max-height: 700px;
+  }
+
+  button{
+    background: #b50811 !important;
+  }
+  .header1{
+    font-size: 10px !important;
+    margin-bottom: 10px;
+  }
+  .iconfoto {
+    max-width: 400px;
+  }
+
+  .iconfoto{
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .izquierdo{
+    max-width: 30%;
+    float: left;
+  }
+  .derecho{
+    max-width: 30%;
+    float: right;
+  }
+
+}

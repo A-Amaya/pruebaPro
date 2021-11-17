@@ -1,0 +1,63 @@
+
+<div class="derecho"  >
+  <mat-card id="segundocuadro" >
+
+    <mat-card style="padding: 40px;">
+      <mat-card-content id="header1"  >
+        Usuario Logeado:
+      </mat-card-content >
+      <mat-card-header *ngIf="user$ | async as user else login">
+        <div mat-card-avatar class="iconfoto" ></div>
+        <mat-card-title *ngIf="user$" style="font-size: 15px"> {{ user?.email }} </mat-card-title>
+        <mat-card-subtitle >Guardia en turno</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-footer>
+        <mat-card-actions *ngIf="!isLogged">
+          <button style="width: 100%" mat-raised-button color="primary"  (click)="logout()" >
+            CERRAR SESIÓN
+          </button>
+        </mat-card-actions>
+      </mat-card-footer>
+    </mat-card>
+  </mat-card>
+</div>
+
+<div class="izquierdo"  *ngIf="user$ | async as user else login" (mousemove)="entrar()">
+  <mat-card id="primercuadro">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Escanér</mat-card-title>
+        <mat-card-subtitle>
+          Escanea el QR para obtener información.
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content >
+        <div   class="scanner-container" >
+          <zxing-scanner   (scanSuccess)="handleScan($event)" [enable] = 'scannerEnable' [formats]="['QR_CODE', 'EAN_13', 'CODE_128', 'DATA_MATRIX']"> </zxing-scanner>
+          <!--      Contenedor de mi scanner-->
+        </div>
+        <!--        <p *ngIf='scannedString !== ""'>-->
+        <!--          Escaneado: {{scannedString}}-->
+        <!--        </p>-->
+      </mat-card-content>
+      <mat-card-actions >
+        <button mat-raised-button color="primary" (click)="boton($event)" *ngIf="! isLogged">
+          Escanear código QR
+        </button>
+      </mat-card-actions>
+      <mat-card-footer style="background-color: #b50811">
+        <div>
+          <br>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </mat-card>
+</div>
+
+
+<ng-template #login>
+
+</ng-template>
+
+
+

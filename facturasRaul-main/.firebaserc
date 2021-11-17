@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "facturas-2baeb": {
+      "hosting": {
+        "facturasRaul": [
+          "facturas-2baeb"
+        ]
+      }
+    }
+  }
+}

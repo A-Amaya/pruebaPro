@@ -1,0 +1,92 @@
+<ng-container *ngIf="user | async as user ">
+<mat-form-field style="left: 5%; color: white;" *ngIf="user?.email == 'raulleal4@gmail.com' || user?.email == 'pgonzalez@grupoveloci.com'">
+  <mat-label >Guía a asignar</mat-label>
+  <input matInput placeholder="#de guia para asignar"  [formControl]="guia">
+</mat-form-field>
+</ng-container>
+
+<mat-form-field  style="margin-left: 5%; margin-right: 3%">
+    <input matInput placeholder="Ingresa # SO, RN o Fac." (keyup)="applyFilter( $event )" >
+  <mat-label style="color:white" >Remisión a Buscar</mat-label>
+</mat-form-field>
+
+<div class="mat-elevation-z8" >
+  <div style="display: inline-flex; ">
+  <button mat-button (click)="exporter.exportTable('xlsx',  {fileName:'DescargaDatos',exportCompleted: downloadExcel()})" style="margin-right: 3px;  " >&nbsp;&nbsp;Descargar XLSX&nbsp;&nbsp;</button>
+  <button mat-button (click)="exporter.exportTable('csv',  {fileName:'DescargaDatos',exportCompleted: downloadExcel()})"  style="margin-right: 3px;  ">&nbsp;&nbsp;Descargar CSV&nbsp;&nbsp;</button>
+  <button mat-button (click)="exporter.exportTable('json',  {fileName:'DescargaDatos',exportCompleted: downloadExcel()})"  style="margin-right: 3px; ">&nbsp;&nbsp;Descargar JSON&nbsp;&nbsp;</button>
+  </div>
+  <table #tabla1 mat-table [dataSource]="dataSource" matSort style="width: 100%" matTableExporter  #exporter = "matTableExporter" [hiddenColumns]="[8]">
+
+    <!-- Progress Column -->
+
+    <ng-container matColumnDef="empresa" style="color: white;"  >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th> <!-- nombre de la tabla -->
+      <td mat-cell *matCellDef="let row"> {{ row['empresa'] }} </td>
+    </ng-container>
+
+      <ng-container matColumnDef="ordenDeVenta" style="color: white;">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Orden de Venta </th>
+      <td mat-cell *matCellDef="let row"> {{row['ordenDeVenta']}}</td>
+      </ng-container>
+
+    <ng-container matColumnDef="remision1" style="color: white;">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Enviando a:</th>
+      <td mat-cell *matCellDef="let row"> {{row['remision1']}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="remision2" style="color: white;">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Remisión </th>
+      <td mat-cell *matCellDef="let row"> {{row['remision2']}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="factura" style="color: white; ">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Factura </th>
+      <td mat-cell *matCellDef="let row"> {{row['factura']}} </td><!--  aqui se manda a llamar el dato de la bd-->
+      </ng-container>
+
+    <ng-container matColumnDef="fechaHora" style="color: white; " >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha y hora </th>
+      <td mat-cell *matCellDef="let row"> {{row['fechaHora']}} </td><!--  aqui se manda a llamar el dato de la bd-->
+    </ng-container>
+
+    <ng-container matColumnDef="cantidad" style="color: white; ">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Embarcando</th>
+      <td mat-cell *matCellDef="let row"> {{row['cantidad']}}  </td><!--  aqui se manda a llamar el dato de la bd-->
+    </ng-container>
+
+    <ng-container matColumnDef="guias" style="color: white; ">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Guias </th>
+      <td mat-cell *matCellDef="let row"> {{row['guias']}}  </td><!--  aqui se manda a llamar el dato de la bd-->
+    </ng-container>
+
+
+    <ng-container matColumnDef="acto" *ngIf="user | async as user"   >
+      <th mat-header-cell *matHeaderCellDef  > Acciones </th>
+      <td mat-cell *matCellDef="let element"> {{element.acto}}
+
+          <button mat-raised-button   (click)="asignarFactura(element.id, guia.value)" *ngIf="!guia.value && user?.email == 'raulleal4@gmail.com' " disabled>Asignar Guía</button>
+        <button mat-raised-button   (click)="asignarFactura(element.id, guia.value)" *ngIf="guia.value && user?.email == 'raulleal4@gmail.com' || user?.email == 'pgonzalez@grupoveloci.com' ">Asignar Guía</button>
+
+        <button mat-raised-button (click)="validarGuias(element.id)" > Validar Guías </button>
+          <button mat-raised-button (click)="verDetalles(element.id, element.detalles)"> <!-- *ngIf="user?.email == 'raulleal4@gmail.com'" --> Detalles </button>
+        <button mat-raised-button *ngIf="user?.email == 'raulleal4@gmail.com'"  (click)="deleteData(element.id)" >  Eliminar datos</button>
+      </td>
+
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No se encontró resultado en la búsqueda"{{input.value}}"</td>
+    </tr>
+  </table>
+
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+
+</div>
+
+

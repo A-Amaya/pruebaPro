@@ -1,0 +1,45 @@
+:host{
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+}
+
+mat-form-field{
+  width: 100%;
+  min-width:100px;
+}
+
+mat-card-title,
+mat-card-content{
+  display: flex;
+  justify-content: center;
+}
+
+button{
+  width: 100%;
+  background: #b50811 !important;
+}
+//
+//mat-card{
+//  max-width: 20%;
+//  display: flex;
+//  flex-direction: column;
+//  margin: auto;
+//}
+//
+//form {
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//button{
+//  width: 100%;
+//  background: #b50811 !important;
+//
+//}
+//button:hover{
+//  background: black !important;
+//  color: darkgrey !important;
+//}
+
+

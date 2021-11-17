@@ -1,0 +1,21 @@
+<mat-card style="max-width: 50%;">
+  <mat-card-header>
+    <mat-card-title>
+      Escáner
+    </mat-card-title>
+    <mat-card-subtitle>
+      Escanea el QR/Código de barras para obtener información de la guía
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class='scanner-container'>
+      <zxing-scanner (scanSuccess)='handleScan($event)' (autostarted)="boton($event)"  [enable]='scannerEnabled' [formats]="['QR_CODE', 'EAN_13', 'CODE_128', 'DATA_MATRIX']"></zxing-scanner>
+    </div>
+    <p *ngIf="scannedString !== ''">
+      Escaneado: {{ scannedString }}
+    </p>
+<!--  </mat-card-content>-->
+<!--  <mat-card-actions>-->
+<!--    <button mat-raised-button color='primary' >Escanear código QR</button>-->
+<!--  </mat-card-actions>-->
+<!--</mat-card>-->

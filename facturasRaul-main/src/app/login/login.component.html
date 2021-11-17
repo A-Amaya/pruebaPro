@@ -1,0 +1,31 @@
+<br><br><br><br><br><br><br><br><br>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title style="text-align: center">
+    Autenticación
+    </mat-card-title>
+    <mat-card-subtitle>
+      <br>Inicie sesión con sus credenciales
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="loginForm" (submit)="onLogin()" >
+      <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <input matInput class="form-control" formControlName="email" placeholder="Ingresa tu usuario">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput class="form-control" formControlName="password" type="password" placeholder="Ingresa tu contraseña">
+      </mat-form-field>
+      </form>
+    </mat-card-content>
+  <div>
+    <button type="submit"  (click)="onLogin()" mat-raised-button color="primary" >
+    Iniciar
+    </button>
+  </div>
+</mat-card>
+
