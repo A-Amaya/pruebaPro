@@ -1,31 +1,62 @@
-<br><br><br><br><br><br><br><br><br>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title style="text-align: center">
-    Autenticación
-    </mat-card-title>
-    <mat-card-subtitle>
-      <br>Inicie sesión con sus credenciales
-    </mat-card-subtitle>
-  </mat-card-header>
+<!DOCTYPE html>
+<html>
 
-  <mat-card-content>
-    <form [formGroup]="loginForm" (submit)="onLogin()" >
-      <mat-form-field appearance="fill">
-        <mat-label>Usuario</mat-label>
-        <input matInput class="form-control" formControlName="email" placeholder="Ingresa tu usuario">
-      </mat-form-field>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Contraseña</mat-label>
-        <input matInput class="form-control" formControlName="password" type="password" placeholder="Ingresa tu contraseña">
-      </mat-form-field>
-      </form>
-    </mat-card-content>
-  <div>
-    <button type="submit"  (click)="onLogin()" mat-raised-button color="primary" >
-    Iniciar
-    </button>
-  </div>
-</mat-card>
+<body class="grid">
+    <main class="main">
+        <div class="name-company">Name Company</div>
+        <div class="text">
+            <div class="text-bienvenido">Bienvenido de nuevo</div>
+            <div class="line"></div>
+        </div>
+        <div class="description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                .Vero eos facilis cumque adipisci officiis architecto
+                obcaecati voluptate? Cupiditate deserunt consectetur
+                veritatis laborum autem omnis numquam, quod ab sunt
+                eligendi beatae?</p>
 
+        </div>
+
+
+    </main>
+
+
+
+    <aside class="asidee">
+        <div class="form">
+            <div class="title">Autenticación</div>
+
+            <form [formGroup]="loginForm" (submit)="onLogin()">
+                <div class="inputs">
+                    <div class="user">
+                        <input tmatInput class="form-control" formControlName="email" required>
+                        <div class="underline"></div>
+                        <label>Correo</label>
+                    </div>
+                </div>
+
+                <div class="inputs">
+                    <div class="user">
+                        <input matInput class="form-control" formControlName="password" type="password" required>
+                        <div class="underline"></div>
+                        <label>Contraseña</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="button-c">
+            <button type="submit"  (click)="onLogin()">Iniciar sesión</button>
+        </div>
+
+    </aside>
+
+</body>
+
+</html>

@@ -1,45 +1,169 @@
-:host{
-  display: flex;
-  justify-content: center;
-  margin: 100px 0;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html{
+height: 100%;
+}
+body{
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  min-height: 100%;
+}
+.grid > *{
+  border-radius: 0 5px 5px 0;
+}
+.main{
+  grid-area: main;
+  background-image: linear-gradient(
+    rgba(18, 129, 250, 0.863),
+    rgba(18, 108, 250, 0.863)
+  ),
+url(../../assets/img/fondojpg.jpg); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100% 100%;
+  color: white;
+}
+.asidee{
+  grid-area: aside;
+  margin: auto;
+}
+.grid{
+  display: grid;
+  grid-template-areas: 
+  "main"
+  "aside";
+}
+.name-company{
+  margin: 50px 0 0 50px;
+  font-size: 1.5rem;
+}
+.text .text-bienvenido{
+  text-align: center;
+  margin: 350px 0 0 0;
+  font-size: 4rem;
+  font-weight: 700;
+}
+.line{
+  border-bottom:solid 10px white;
+  width: 40px;
+  height:10px;
+  margin: auto;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+.description{
+ margin: auto;
+ width: 700px;
+ font-size: 1.3rem;
+ padding: 20px;
+}
+p{
+  text-align: center;
 }
 
-mat-form-field{
+/********************************************************/
+.title{
+  font-size: 2.3rem;
+  text-align: center;
+  padding: 0 0 80px 0;
+  color: rgba(31, 31, 31, 0.8);
+  font-weight: 600;
+}
+/*****************************************************/
+
+.inputs{
+  width: 550px;
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.1);
+  margin: auto;
+}
+.inputs .user{
+  height: 40px;
   width: 100%;
-  min-width:100px;
+  position: relative;
+  margin: 10px;
+}
+.inputs .user input{
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  border-bottom: 2px solid silver;
+}
+.user input:focus ~ label,
+.user input:valid ~ label{
+  transform: translateY(-20px);
+  font-size: 1.6rem;
+  color: rgba(18, 108, 250, 0.863);
+}
+.inputs .user label{
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  color: gray;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-size: 1.4rem;
+}
+.inputs .user .underline{
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+.user .underline::before{
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: rgba(18, 108, 250, 0.863);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.user input:focus ~ .underline::before,
+.user input:valid ~ .underline::before{
+  transform: scaleX(1);
 }
 
-mat-card-title,
-mat-card-content{
-  display: flex;
-  justify-content: center;
+.button-session{
+  text-align: center;
 }
-
 button{
-  width: 100%;
-  background: #b50811 !important;
+  background-image: linear-gradient(to right, #128FFA 0%, #127AFA  51%, #128FFA  100%);
 }
-//
-//mat-card{
-//  max-width: 20%;
-//  display: flex;
-//  flex-direction: column;
-//  margin: auto;
-//}
-//
-//form {
-//  display: flex;
-//  flex-direction: column;
-//}
-//
-//button{
-//  width: 100%;
-//  background: #b50811 !important;
-//
-//}
-//button:hover{
-//  background: black !important;
-//  color: darkgrey !important;
-//}
-
-
+button{
+  margin: 10px;
+          padding: 15px 45px;
+          text-align: center;
+          transition: 0.5s;
+          background-size: 200% auto;
+          color: white;            
+          box-shadow: 0 0 20px #eee;
+          border-radius: 30px;
+          outline: 0px;
+          border: none;
+          font-size: 1.3rem;
+          cursor: pointer;
+}
+button:hover{
+  background-position: right center; /* change the direction of the change here */
+          color: #fff;
+          text-decoration: none;
+}
+.button-c{
+  text-align: center;
+}
+@media(min-width: 600px){
+  .grid{
+      grid-template-columns: 50% auto;
+      grid-template-rows: 100%;
+      grid-template-areas: 
+      "main aside"
+      "articulo articulo";
+  }
+}
